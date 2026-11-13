@@ -1,0 +1,1056 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#090d18">
+<title>Admin · Kho kỉ niệm 11C1</title>
+<meta name="description" content="Trang quản trị Kho kỉ niệm 11C1">
+<style id="embedded-admin-css">
+*{box-sizing:border-box}body{margin:0;background:#080b14;color:#f7f8ff;font-family:system-ui,-apple-system,Segoe UI,sans-serif}.badge{display:inline-block;padding:7px 10px;border-radius:99px;background:#7c5cff18;border:1px solid #7c5cff55;color:#c9c0ff;font-size:11px;font-weight:800;letter-spacing:1px}header{max-width:1050px;margin:auto;padding:45px 18px 28px;display:flex;justify-content:space-between;align-items:end;gap:20px;border-bottom:1px solid #ffffff12}header h1{font-size:38px;margin:12px 0 5px}header p{color:#9aa4b8;margin:0}header a{color:#bfb4ff;text-decoration:none;border:1px solid #ffffff14;padding:11px 14px;border-radius:12px}main{max-width:1050px;margin:auto;padding:25px 18px 60px;display:grid;grid-template-columns:390px 1fr;gap:18px}.panel{background:#111827dd;border:1px solid #ffffff12;border-radius:20px;padding:20px}.panel h2{margin:0 0 18px}label{display:block;color:#aeb7c8;font-size:13px;margin:13px 0}input,textarea{width:100%;margin-top:7px;background:#0c1220;color:#fff;border:1px solid #ffffff12;border-radius:11px;padding:12px;outline:none;font:inherit}input:focus,textarea:focus{border-color:#7c5cff88}.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}.check{display:flex;align-items:center;gap:9px}.check input{width:auto;margin:0}button{width:100%;border:0;border-radius:12px;padding:13px;background:linear-gradient(100deg,#7656ff,#3abcf3);color:white;font-weight:800;cursor:pointer}.secondary{width:auto;background:#ffffff0a;border:1px solid #ffffff12}.preview{height:170px;border:1px dashed #ffffff18;border-radius:13px;display:grid;place-items:center;color:#667186;overflow:hidden}.preview img{width:100%;height:100%;object-fit:cover}.msg{font-size:13px;min-height:18px;color:#aab4c7}.listhead{display:flex;justify-content:space-between;align-items:center}.listhead h2{margin-bottom:3px}.listhead small{color:#78849a}.item{display:flex;gap:12px;padding:13px 0;border-top:1px solid #ffffff0d}.thumb{width:82px;height:65px;border-radius:10px;background:#0b1120;overflow:hidden;flex:none;display:grid;place-items:center}.thumb img{width:100%;height:100%;object-fit:cover}.info{min-width:0;flex:1}.info b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.info small{display:block;color:#79859a;margin-top:4px}.actions{display:flex;gap:7px;align-items:center}.actions button{width:auto;padding:8px 10px;background:#ffffff0a;border:1px solid #ffffff12}.actions .danger{color:#ff9b9b}.hiddenrow{opacity:.5}.loading{text-align:center;color:#7c879a;padding:30px}@media(max-width:800px){main{grid-template-columns:1fr}header{align-items:flex-start;flex-direction:column}.two{grid-template-columns:1fr}}
+
+
+/* ===== 11C1 ADMIN · VIP LUXURY THEME (visual-only overrides) ===== */
+:root {
+  color-scheme: dark;
+  --vip-gold: #f7d98b;
+  --vip-gold-bright: #fff0bd;
+  --vip-gold-deep: #9e7431;
+  --vip-ink: #080a13;
+}
+body {
+  position: relative;
+  isolation: isolate;
+  overflow-x: hidden;
+  background:
+    radial-gradient(ellipse at 15% 8%, rgba(117, 75, 22, .24), transparent 34%),
+    radial-gradient(ellipse at 88% 22%, rgba(69, 87, 154, .20), transparent 32%),
+    radial-gradient(ellipse at 50% 100%, rgba(151, 105, 39, .13), transparent 38%),
+    linear-gradient(135deg, #070912 0%, #101321 48%, #080a12 100%);
+}
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  inset: -20%;
+  z-index: -1;
+  pointer-events: none;
+}
+body::before {
+  opacity: .42;
+  background-image:
+    radial-gradient(2px 2px at 8% 18%, #fff3c4 48%, transparent 60%),
+    radial-gradient(1.5px 1.5px at 23% 72%, #f5d78c 48%, transparent 60%),
+    radial-gradient(2px 2px at 41% 31%, #ffffff 48%, transparent 60%),
+    radial-gradient(1px 1px at 58% 84%, #f5d78c 48%, transparent 60%),
+    radial-gradient(2px 2px at 76% 14%, #fff0bd 48%, transparent 60%),
+    radial-gradient(1.5px 1.5px at 91% 61%, #ffffff 48%, transparent 60%);
+  background-size: 360px 300px;
+  animation: vipTwinkle 5s ease-in-out infinite alternate;
+}
+body::after {
+  opacity: .15;
+  background: linear-gradient(115deg, transparent 38%, rgba(255, 231, 171, .12) 49%, transparent 60%);
+  transform: translateX(-55%);
+  animation: vipShimmer 12s ease-in-out infinite;
+}
+@keyframes vipTwinkle {
+  0% { opacity: .18; transform: translateY(0); }
+  100% { opacity: .58; transform: translateY(-12px); }
+}
+@keyframes vipShimmer {
+  0%, 20% { transform: translateX(-65%); }
+  75%, 100% { transform: translateX(65%); }
+}
+header {
+  position: relative;
+  border-bottom: 1px solid rgba(247, 217, 139, .24);
+  background: linear-gradient(180deg, rgba(255,255,255,.035), transparent);
+}
+header h1 {
+  color: var(--vip-gold-bright);
+  text-shadow: 0 0 22px rgba(247, 217, 139, .20);
+  letter-spacing: .3px;
+}
+header p { color: #b9b4a6; }
+header a {
+  color: var(--vip-gold-bright);
+  border: 1px solid rgba(247, 217, 139, .42);
+  background: rgba(247, 217, 139, .07);
+  box-shadow: 0 0 22px rgba(247, 217, 139, .07), inset 0 0 14px rgba(247, 217, 139, .035);
+  transition: .25s ease;
+}
+header a:hover {
+  transform: translateY(-2px);
+  border-color: var(--vip-gold-bright);
+  box-shadow: 0 0 24px rgba(247, 217, 139, .20);
+}
+.badge {
+  color: #fff0bd;
+  background: linear-gradient(110deg, rgba(247,217,139,.17), rgba(158,116,49,.10));
+  border-color: rgba(247,217,139,.48);
+  box-shadow: 0 0 18px rgba(247,217,139,.12);
+}
+.panel {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(145deg, rgba(25, 27, 39, .94), rgba(12, 15, 25, .94));
+  border: 1px solid rgba(247, 217, 139, .22);
+  box-shadow: 0 18px 55px rgba(0,0,0,.34), inset 0 1px 0 rgba(255,255,255,.055);
+  backdrop-filter: blur(14px);
+}
+.panel::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 8%;
+  right: 8%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,240,189,.8), transparent);
+  pointer-events: none;
+}
+.panel h2 { color: #f7e7bd; }
+label { color: #c9c0a9; }
+input, textarea {
+  background: rgba(5, 8, 16, .78);
+  border: 1px solid rgba(247,217,139,.17);
+  transition: border-color .2s, box-shadow .2s;
+}
+input:focus, textarea:focus {
+  border-color: rgba(255,224,151,.75);
+  box-shadow: 0 0 0 3px rgba(247,217,139,.09), 0 0 18px rgba(247,217,139,.08);
+}
+button {
+  background: linear-gradient(115deg, #8c6429, #e4c477 48%, #a87b36);
+  color: #17120a;
+  border: 1px solid rgba(255,240,189,.62);
+  box-shadow: 0 7px 22px rgba(158,116,49,.20), inset 0 1px 0 rgba(255,255,255,.35);
+  transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+}
+button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+  box-shadow: 0 10px 28px rgba(204,160,75,.30), 0 0 18px rgba(247,217,139,.13);
+}
+button:active:not(:disabled) { transform: translateY(0) scale(.99); }
+button:disabled { opacity: .65; cursor: wait; }
+.secondary,
+.actions button {
+  color: #f1dfb2;
+  background: rgba(247,217,139,.075);
+  border: 1px solid rgba(247,217,139,.24);
+  box-shadow: none;
+}
+.actions .danger {
+  color: #ffaaaa;
+  border-color: rgba(255,120,120,.24);
+  background: rgba(255,90,90,.07);
+}
+.preview {
+  border-color: rgba(247,217,139,.28);
+  background: rgba(5,8,16,.42);
+}
+.item {
+  border-top-color: rgba(247,217,139,.12);
+  transition: background .2s ease;
+}
+.item:hover {
+  background: rgba(247,217,139,.035);
+}
+.thumb {
+  border: 1px solid rgba(247,217,139,.20);
+}
+.info b { color: #f8edcf; }
+.info small, .listhead small { color: #aaa18d; }
+.msg { color: #e5cf98; }
+.loading { color: #b8ad93; }
+@media (prefers-reduced-motion: reduce) {
+  body::before, body::after { animation: none !important; }
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+}
+
+
+/* ===== ADMIN LAYOUT UPDATE: scrollable memories + relocated actions ===== */
+#list {
+  max-height: 620px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 4px 10px 4px 0;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(220, 186, 111, .65) rgba(255,255,255,.045);
+  overscroll-behavior: contain;
+}
+#list::-webkit-scrollbar { width: 8px; }
+#list::-webkit-scrollbar-track {
+  background: rgba(255,255,255,.045);
+  border-radius: 20px;
+}
+#list::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #f3d68e, #8f682e);
+  border-radius: 20px;
+  border: 2px solid #11131d;
+}
+#list::-webkit-scrollbar-thumb:hover { background: #ffe6a8; }
+
+.item {
+  display: grid;
+  grid-template-columns: 88px minmax(0, 1fr);
+  grid-template-rows: auto auto;
+  align-items: center;
+  gap: 10px 14px;
+  padding: 15px 10px;
+  margin: 0 0 8px;
+  border: 1px solid rgba(247,217,139,.13);
+  border-radius: 14px;
+  background: rgba(255,255,255,.018);
+}
+.item:hover {
+  border-color: rgba(247,217,139,.30);
+  background: rgba(247,217,139,.045);
+}
+.thumb {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  width: 88px;
+  height: 76px;
+}
+.info {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: end;
+}
+.actions {
+  grid-column: 2;
+  grid-row: 2;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  align-self: start;
+}
+.actions button { min-width: 66px; }
+
+@media (max-width: 520px) {
+  #list { max-height: 520px; }
+  .item {
+    grid-template-columns: 70px minmax(0, 1fr);
+    gap: 8px 10px;
+    padding: 12px 8px;
+  }
+  .thumb { width: 70px; height: 68px; }
+  .actions { justify-content: flex-start; }
+  .actions button { padding: 7px 9px; min-width: 58px; }
+}
+
+
+
+/* ===== CALM STARFALL BACKGROUND ===== */
+body::before {
+  opacity: .72;
+  background-image:
+    radial-gradient(1px 1px at 7% 8%, rgba(255,239,190,.9) 45%, transparent 70%),
+    radial-gradient(1.5px 1.5px at 19% 32%, rgba(255,255,255,.85) 45%, transparent 70%),
+    radial-gradient(1px 1px at 34% 14%, rgba(245,211,137,.8) 45%, transparent 70%),
+    radial-gradient(2px 2px at 51% 44%, rgba(255,246,218,.8) 45%, transparent 70%),
+    radial-gradient(1px 1px at 68% 20%, rgba(245,211,137,.85) 45%, transparent 70%),
+    radial-gradient(1.5px 1.5px at 83% 57%, rgba(255,255,255,.8) 45%, transparent 70%),
+    radial-gradient(1px 1px at 94% 12%, rgba(255,239,190,.9) 45%, transparent 70%);
+  background-size: 230px 260px;
+  animation: starfallDrift 18s linear infinite, starfallTwinkle 5.5s ease-in-out infinite alternate;
+}
+@keyframes starfallDrift {
+  from { background-position: 0 -260px; }
+  to { background-position: 35px 520px; }
+}
+@keyframes starfallTwinkle {
+  0% { opacity: .35; }
+  100% { opacity: .82; }
+}
+
+
+
+/* ===== 11C1 ADMIN DYNAMIC ISLAND ===== */
+.admin-island {
+  position: fixed;
+  z-index: 9999;
+  top: max(14px, env(safe-area-inset-top));
+  left: 50%;
+  width: 58px;
+  height: 58px;
+  transform: translateX(-50%);
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255,231,171,.68);
+  border-radius: 19px;
+  color: #fff0bd;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(255,240,189,.22), transparent 42%),
+    linear-gradient(145deg, #282116, #080a12 70%);
+  box-shadow: 0 8px 28px rgba(0,0,0,.45), 0 0 22px rgba(247,217,139,.20), inset 0 1px 0 rgba(255,255,255,.2);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  animation: islandFloat 3.2s ease-in-out infinite;
+  transition: width .58s cubic-bezier(.2,.9,.2,1.15), height .58s cubic-bezier(.2,.9,.2,1.15),
+    border-radius .48s ease, top .48s ease, box-shadow .3s ease;
+}
+.admin-island::before {
+  content: "✦";
+  font-size: 25px;
+  text-shadow: 0 0 12px #f7d98b, 0 0 26px rgba(247,217,139,.65);
+}
+.admin-island::after {
+  content: "11C1 ADMIN";
+  position: absolute;
+  top: calc(100% + 7px);
+  color: rgba(255,236,190,.72);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.7px;
+  white-space: nowrap;
+  text-shadow: 0 1px 8px #000;
+  transition: opacity .2s ease;
+}
+.admin-island.is-open {
+  top: max(10px, env(safe-area-inset-top));
+  width: min(94vw, 440px);
+  height: 66px;
+  border-radius: 25px;
+  animation: islandOpen .58s cubic-bezier(.2,.9,.2,1.15) both;
+}
+.admin-island.is-open::before { content: "✦  11C1 ADMIN"; font-size: 15px; letter-spacing: 1.3px; }
+.admin-island.is-open::after { content: "CHẠM ĐỂ THU GỌN"; top: auto; right: 17px; font-size: 8px; }
+@keyframes islandFloat {
+  0%,100% { transform: translate(-50%,0) rotate(0deg); }
+  25% { transform: translate(calc(-50% + 1px),-3px) rotate(1.2deg); }
+  75% { transform: translate(calc(-50% - 1px),1px) rotate(-1.2deg); }
+}
+@keyframes islandOpen {
+  0% { transform: translateX(-50%) scale(.82); }
+  65% { transform: translateX(-50%) scale(1.035); }
+  100% { transform: translateX(-50%) scale(1); }
+}
+.admin-island.is-open { box-shadow: 0 12px 38px rgba(0,0,0,.55), 0 0 30px rgba(247,217,139,.24), inset 0 1px 0 rgba(255,255,255,.22); }
+.admin-island-content {
+  padding-top: 88px;
+  opacity: 0;
+  transform: translateY(-12px) scale(.985);
+  transform-origin: top center;
+  pointer-events: none;
+  transition: opacity .32s ease, transform .48s cubic-bezier(.2,.9,.2,1.1);
+}
+body.island-collapsed .admin-island-content {
+  visibility: hidden;
+  height: 0;
+  overflow: hidden;
+}
+body.island-open .admin-island-content {
+  visibility: visible;
+  opacity: 1;
+  height: auto;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+body.island-open .admin-island { animation: none; }
+.island-hint {
+  margin: 0 auto 12px;
+  width: min(94vw, 440px);
+  text-align: center;
+  color: rgba(255,235,190,.7);
+  font-size: 11px;
+  letter-spacing: .7px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .admin-island, .admin-island.is-open { animation: none !important; transition-duration: .01ms !important; }
+}
+
+
+/* ===== DYNAMIC ISLAND FIXES ===== */
+/* Hide the original page immediately, even before the setup script runs. */
+body:not(.island-open) > header,
+body:not(.island-open) > main {
+  visibility: hidden !important;
+}
+body.island-open header,
+body.island-open main {
+  visibility: visible;
+}
+
+/* Keep the island mathematically centered on every viewport. */
+.admin-island {
+  left: 50% !important;
+  right: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 64px;
+  height: 64px;
+  min-width: 64px;
+  max-width: 64px;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+  text-align: center !important;
+  transform: translateX(-50%);
+}
+.admin-island::before {
+  display: block;
+  position: static;
+  margin: 0;
+  padding: 0;
+  font-size: 29px;
+  line-height: 1;
+  transform: none;
+}
+.admin-island::after {
+  pointer-events: none;
+}
+.admin-island.is-open {
+  left: 50% !important;
+  right: auto !important;
+  width: min(94vw, 440px);
+  max-width: min(94vw, 440px);
+  height: 66px;
+  padding: 0 18px !important;
+  justify-content: center !important;
+  transform: translateX(-50%);
+}
+.admin-island.is-open::before {
+  position: static;
+  margin: 0;
+  font-size: 17px;
+  line-height: 1;
+  letter-spacing: 1.2px;
+  transform: none;
+}
+.admin-island.is-open::after {
+  top: auto;
+  right: 16px;
+}
+@keyframes islandFloat {
+  0%,100% { transform: translate(-50%,0) rotate(0deg); }
+  25% { transform: translate(-50%,-3px) rotate(1deg); }
+  75% { transform: translate(-50%,1px) rotate(-1deg); }
+}
+@keyframes islandOpen {
+  0% { transform: translate(-50%,0) scale(.88); }
+  65% { transform: translate(-50%,0) scale(1.025); }
+  100% { transform: translate(-50%,0) scale(1); }
+}
+
+
+
+/* ===== DYNAMIC ISLAND V2: no flash + smooth collapse/expand ===== */
+.admin-island {
+  left: 50% !important;
+  right: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 64px !important;
+  min-width: 64px !important;
+  max-width: 64px !important;
+  height: 64px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0;
+  line-height: 1 !important;
+  text-align: center !important;
+  transform: translateX(-50%);
+  overflow: hidden;
+  transition:
+    width .72s cubic-bezier(.22,1,.36,1),
+    max-width .72s cubic-bezier(.22,1,.36,1),
+    height .72s cubic-bezier(.22,1,.36,1),
+    border-radius .72s cubic-bezier(.22,1,.36,1),
+    background .45s ease,
+    box-shadow .45s ease;
+}
+.admin-island .island-symbol {
+  display: block;
+  flex: 0 0 auto;
+  font-size: 31px;
+  line-height: 1;
+  text-align: center;
+  transform: translateY(-1px);
+  color: #fff0bd;
+  text-shadow: 0 0 12px #f7d98b, 0 0 27px rgba(247,217,139,.72);
+  transition: transform .55s cubic-bezier(.22,1,.36,1), font-size .55s ease;
+}
+.admin-island .island-name {
+  display: none;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 1.3px;
+  white-space: nowrap;
+}
+.admin-island::before,
+.admin-island::after { content: none !important; }
+
+.admin-island.is-open {
+  left: 50% !important;
+  right: auto !important;
+  width: min(94vw, 440px) !important;
+  max-width: min(94vw, 440px) !important;
+  min-width: 0 !important;
+  height: 66px !important;
+  border-radius: 25px !important;
+  padding: 0 20px !important;
+  gap: 12px;
+  transform: translateX(-50%);
+  animation: none !important;
+}
+.admin-island.is-open .island-symbol {
+  font-size: 23px;
+  transform: translateY(0) rotate(90deg);
+}
+.admin-island.is-open .island-name { display: inline; }
+
+.admin-island-content {
+  box-sizing: border-box;
+  width: 100%;
+  padding-top: 0;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-18px);
+  transition:
+    max-height 1.05s cubic-bezier(.22,1,.36,1),
+    opacity .55s ease,
+    transform .85s cubic-bezier(.22,1,.36,1),
+    visibility 0s linear 1.05s;
+}
+body.island-collapsed .admin-island-content {
+  max-height: 0;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+body.island-open .admin-island-content {
+  max-height: 10000px;
+  padding-top: 88px;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+  transition:
+    max-height 1.15s cubic-bezier(.22,1,.36,1),
+    opacity .6s ease .12s,
+    transform .8s cubic-bezier(.22,1,.36,1),
+    visibility 0s;
+}
+.island-hint {
+  margin: 0 auto 18px;
+  padding: 0 12px;
+  width: min(94vw, 440px);
+  text-align: center;
+  color: rgba(230,216,183,.58);
+  font-size: 10px;
+  letter-spacing: 1.15px;
+  text-shadow: 0 0 12px rgba(247,217,139,.12);
+}
+
+/* Blend the page heading into the starry luxury atmosphere. */
+header {
+  padding-top: 28px !important;
+  padding-bottom: 26px !important;
+  border-bottom-color: rgba(226,202,151,.13) !important;
+  background: linear-gradient(180deg, rgba(255,238,195,.018), transparent) !important;
+}
+header h1 {
+  color: #e8d8ad !important;
+  font-size: clamp(27px, 7vw, 36px) !important;
+  font-weight: 650 !important;
+  letter-spacing: .1px !important;
+  text-shadow: 0 2px 16px rgba(236,207,143,.13) !important;
+}
+header p {
+  color: rgba(218,211,194,.72) !important;
+  font-size: 14px;
+}
+header .badge {
+  color: #d9c79c !important;
+  background: rgba(213,183,119,.075) !important;
+  border-color: rgba(213,183,119,.25) !important;
+  box-shadow: none !important;
+}
+.panel h2 {
+  color: #e2d2aa !important;
+  font-weight: 650;
+  text-shadow: 0 1px 12px rgba(232,207,153,.10);
+}
+@media (prefers-reduced-motion: reduce) {
+  .admin-island, .admin-island-content {
+    transition-duration: .01ms !important;
+    animation: none !important;
+  }
+}
+
+
+
+/* V3 hard state rules for the collapsed/expanded admin panel */
+body.island-collapsed #adminContent {
+  max-height: 0 !important;
+  height: 0 !important;
+  padding-top: 0 !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  }
+  body.island-open #adminContent {
+  max-height: 10000px !important;
+  height: auto !important;
+  padding-top: 88px !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+</head>
+<body class="island-collapsed">
+<button type="button" id="adminIsland" class="admin-island" aria-label="Mở menu Admin" aria-expanded="false">
+  <span class="island-symbol">✦</span>
+</button>
+<div class="welcome-greeting" id="welcomeGreeting" role="status" aria-live="polite">
+  Chào sếp Hùng đã quay lại
+</div>
+<div id="adminContent" class="admin-island-content" hidden inert>
+  <p class="island-hint">CHẠM BIỂU TƯỢNG ĐỂ MỞ QUẢN LÝ KỈ NIỆM</p>
+  <header><div><span class="badge">11C1 ADMIN</span><h1>Quản lý kỉ niệm</h1><p>Thêm và quản lý nội dung hiển thị trên User Web.</p></div><a href="index.html" target="_blank">↗ Mở User Web</a></header>
+  <main>
+  <section class="panel">
+  <h2>➕ Thêm kỉ niệm</h2>
+  <form id="form">
+  <label>Tiêu đề<input id="title" required placeholder="Ví dụ: Hội trại 11C1"></label>
+  <label>Chủ đề <input id="category" required placeholder="Ví dụ: Hội trại, Sinh nhật, Học tập..."></label>
+  <label>Mô tả<textarea id="description" rows="5" placeholder="Viết vài dòng về kỉ niệm..."></textarea></label>
+  <div class="two"><label>Ngày diễn ra<input id="event_date" type="date"></label><label>Người đăng<input id="author" placeholder="Ví dụ: Hùng"></label></div>
+  <label>Ảnh kỉ niệm<input id="image" type="file" accept="image/*"></label>
+  <div class="preview" id="preview">Chưa chọn ảnh</div>
+  <label class="check"><input id="visible" type="checkbox" checked> Hiển thị trên User Web</label>
+  <button id="submit" type="submit">Đăng kỉ niệm</button>
+  <p id="msg" class="msg"></p>
+  </form>
+  </section>
+  <section class="panel">
+  <div class="listhead"><div><h2>📚 Danh sách kỉ niệm</h2><small id="count">0 bài</small></div><button id="refresh" class="secondary">↻ Làm mới</button></div>
+  <div id="list" class="list"><div class="loading">Đang tải...</div></div>
+  </section>
+  </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script id="embedded-admin-js">
+const SUPABASE_URL="https://vzfhuvoiryupmauumlsp.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY="sb_publishable_M6aKA96AdJIFeLcG7U9lig_BeOM97Pp";
+const {createClient}=supabase,db=createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY);
+const $=s=>document.querySelector(s);
+const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));
+const fmt=v=>v?new Date(v+"T00:00:00").toLocaleDateString("vi-VN"):"Chưa có ngày";
+let rows=[];
+
+$("#image").onchange=()=>{
+ const f=$("#image").files[0],p=$("#preview"); if(!f){p.textContent="Chưa chọn ảnh";return}
+ const u=URL.createObjectURL(f);p.innerHTML=`<img src="${u}">`;
+};
+
+async function upload(file){
+ if(!file)return null;
+ const ext=(file.name.split(".").pop()||"jpg").toLowerCase().replace(/[^a-z0-9]/g,"");
+ const path=`${Date.now()}-${crypto.randomUUID()}.${ext}`;
+ const {error}=await db.storage.from("memories").upload(path,file,{contentType:file.type||"image/jpeg",upsert:false});
+ if(error)throw error;
+ return path;
+}
+
+$("#form").onsubmit=async e=>{
+ e.preventDefault();
+ const btn=$("#submit"),msg=$("#msg");btn.disabled=true;btn.textContent="Đang đăng...";msg.textContent="";
+ try{
+   const file=$("#image").files[0];
+   const path=await upload(file);
+   const {error}=await db.from("memories").insert({
+     title:$("#title").value.trim(),
+     category:$("#category").value.trim()||"Khác",
+     description:$("#description").value.trim(),
+     event_date:$("#event_date").value||null,
+     author:$("#author").value.trim()||null,
+     image_url:path,
+     visible:$("#visible").checked
+   });
+   if(error)throw error;
+   msg.textContent="✓ Đã thêm kỉ niệm!";
+   $("#form").reset();$("#preview").textContent="Chưa chọn ảnh";$("#visible").checked=true;
+   await load();
+ }catch(err){console.error(err);msg.textContent="Lỗi: "+(err.message||err)}
+ finally{btn.disabled=false;btn.textContent="Đăng kỉ niệm"}
+};
+
+async function load(){
+ const {data,error}=await db.from("memories").select("*").order("created_at",{ascending:false});
+ if(error){$("#list").innerHTML=`<div class="loading">Không tải được: ${esc(error.message)}</div>`;return}
+ rows=data||[];$("#count").textContent=rows.length+" bài";
+ $("#list").innerHTML=rows.length?rows.map(m=>{
+   const u=m.image_url?( /^https?:/i.test(m.image_url)?m.image_url:db.storage.from("memories").getPublicUrl(m.image_url).data.publicUrl):"";
+   return `<div class="item ${m.visible?"":"hiddenrow"}"><div class="thumb">${u?`<img src="${esc(u)}">`:"📷"}</div><div class="info"><b>${esc(m.title)}</b><small>Chủ đề: ${esc(m.category||"Khác")} · ${fmt(m.event_date)} · ${m.visible?"Đang hiện":"Đang ẩn"}</small></div><div class="actions"><button data-toggle="${m.id}">${m.visible?"Ẩn":"Hiện"}</button><button class="danger" data-delete="${m.id}">Xóa</button></div></div>`
+ }).join(""):`<div class="loading">Chưa có kỉ niệm.</div>`;
+ document.querySelectorAll("[data-toggle]").forEach(b=>b.onclick=()=>toggle(b.dataset.toggle));
+ document.querySelectorAll("[data-delete]").forEach(b=>b.onclick=()=>remove(b.dataset.delete));
+}
+async function toggle(id){
+ const m=rows.find(x=>String(x.id)===String(id));if(!m)return;
+ const {error}=await db.from("memories").update({visible:!m.visible}).eq("id",id);
+ if(error)alert(error.message);else load();
+}
+async function remove(id){
+ const m=rows.find(x=>String(x.id)===String(id));if(!m)return;
+ if(!confirm("Xóa kỉ niệm này?"))return;
+ const {error}=await db.from("memories").delete().eq("id",id);
+ if(error){alert(error.message);return}
+ if(m.image_url&&!/^https?:/i.test(m.image_url))await db.storage.from("memories").remove([m.image_url]);
+ load();
+}
+$("#refresh").onclick=load;load();
+</script>
+<style>
+/* Hard gate: the HTML hidden attribute guarantees no first-paint flash. */
+#adminContent[hidden] { display: none !important; }
+#adminContent.menu-enter,
+#adminContent.menu-exit {
+  display:block !important;
+  visibility:visible !important;
+  max-height:none !important;
+  height:auto !important;
+  overflow:visible !important;
+  opacity:1 !important;
+  transform:none !important;
+  clip-path:inset(0 0 0 0);
+}
+#adminContent.menu-enter { animation: menuReveal .95s cubic-bezier(.2,.85,.25,1) both; }
+#adminContent.menu-exit { animation: menuHide .9s cubic-bezier(.4,0,.8,.2) both; pointer-events:none; }
+@keyframes menuReveal {
+  0% { clip-path:inset(0 0 100% 0); }
+  65% { clip-path:inset(0 0 0 0); }
+  100% { clip-path:inset(0 0 0 0); }
+}
+@keyframes menuHide {
+  /* Menu folds inward and travels toward the centered Dynamic Island. */
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    clip-path: inset(0 0 0 0 round 22px);
+    filter: blur(0);
+  }
+  42% {
+    opacity: .92;
+    transform: translateY(-22px) scale(.82, .72);
+    clip-path: inset(0 9% 12% 9% round 28px);
+    filter: blur(.2px);
+  }
+  78% {
+    opacity: .58;
+    transform: translateY(-58px) scale(.34, .22);
+    clip-path: inset(0 35% 55% 35% round 30px);
+    filter: blur(1px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-78px) scale(.08, .035);
+    clip-path: inset(0 48% 96% 48% round 30px);
+    filter: blur(2px);
+  }
+}
+#adminIsland {
+  position:fixed !important; z-index:10000 !important;
+  top:max(14px, env(safe-area-inset-top)) !important;
+  left:50% !important; right:auto !important;
+  width:64px !important; min-width:64px !important; max-width:64px !important;
+  height:64px !important; padding:0 !important; margin:0 !important;
+  display:flex !important; align-items:center !important; justify-content:center !important;
+  gap:0 !important; transform:translateX(-50%) !important;
+  border-radius:19px !important; overflow:hidden;
+  transition:width .72s cubic-bezier(.22,1,.36,1), max-width .72s cubic-bezier(.22,1,.36,1),
+    height .72s cubic-bezier(.22,1,.36,1), border-radius .72s cubic-bezier(.22,1,.36,1),
+    box-shadow .4s ease !important;
+}
+#adminIsland .island-symbol {
+  display:block; font-size:32px; line-height:1; text-align:center;
+  color:#fff0bd; text-shadow:0 0 12px #f7d98b, 0 0 27px rgba(247,217,139,.72);
+}
+#adminIsland.is-receiving {
+  animation: islandReceive .9s cubic-bezier(.22,1,.36,1) both;
+}
+@keyframes islandReceive {
+  0%, 100% { box-shadow: 0 8px 28px rgba(0,0,0,.45), 0 0 22px rgba(247,217,139,.20); }
+  45% { box-shadow: 0 8px 34px rgba(0,0,0,.48), 0 0 42px rgba(255,226,157,.55), inset 0 0 22px rgba(255,240,189,.18); }
+}
+#adminIsland .island-name { display:none; white-space:nowrap; font-size:15px; letter-spacing:1.2px; }
+#adminIsland.is-open {
+  width:min(94vw,440px) !important; max-width:min(94vw,440px) !important;
+  min-width:0 !important; height:66px !important; border-radius:25px !important;
+  gap:12px !important; padding:0 18px !important;
+}
+#adminIsland.is-open .island-symbol { font-size:24px; }
+
+@media (prefers-reduced-motion: reduce) {
+  #adminContent.menu-enter, #adminContent.menu-exit { animation-duration:.01ms; }
+  #adminIsland { transition-duration:.01ms !important; }
+  }
+</style>
+
+<style id="rounded-font-and-island-style">
+/* Full-page rounded typography preview inspired by the supplied sample. */
+html, body, button, input, textarea, select, label, p, h1, h2, small, a {
+  font-family: "Baloo 2", "Trebuchet MS", system-ui, sans-serif !important;
+}
+body { font-weight: 500; }
+header h1, .panel h2, .badge, button, .admin-island {
+  font-weight: 800 !important;
+}
+header h1 { letter-spacing: .15px !important; }
+label, input, textarea, .info, .info small { font-weight: 500; }
+
+}
+
+/* Slow, readable fold-back animation: menu visibly travels toward the island. */
+#adminContent.menu-exit {
+  animation: menuHide 1.9s cubic-bezier(.35,.02,.22,1) both !important;
+}
+@keyframes menuHide {
+  0% {
+    opacity:1;
+    transform:translateY(0) scale(1);
+    clip-path:inset(0 0 0 0 round 22px);
+    filter:blur(0);
+  }
+  35% {
+    opacity:.98;
+    transform:translateY(-18px) scale(.92,.88);
+    clip-path:inset(0 4% 5% 4% round 24px);
+    filter:blur(0);
+  }
+  68% {
+    opacity:.82;
+    transform:translateY(-62px) scale(.58,.42);
+    clip-path:inset(0 20% 38% 20% round 28px);
+    filter:blur(.4px);
+  }
+  88% {
+    opacity:.48;
+    transform:translateY(-105px) scale(.22,.13);
+    clip-path:inset(0 39% 75% 39% round 30px);
+    filter:blur(1px);
+  }
+  100% {
+    opacity:0;
+    transform:translateY(-128px) scale(.08,.035);
+    clip-path:inset(0 48% 96% 48% round 30px);
+    filter:blur(2px);
+  }
+}
+#adminIsland.is-receiving {
+  animation: islandReceive 1.9s ease both !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  #adminContent.menu-exit { animation-duration:.01ms !important; }
+}
+</style>
+
+
+
+<style id="welcome-greeting-restored">
+.welcome-greeting {
+  position: fixed;
+  z-index: 9998;
+  top: max(88px, calc(env(safe-area-inset-top) + 78px));
+  left: 50%;
+  width: max-content;
+  max-width: calc(100vw - 32px);
+  transform: translateX(-50%);
+  padding: 9px 18px 11px;
+  border: 1px solid rgba(171,197,255,.24);
+  border-radius: 17px;
+  background: linear-gradient(135deg, rgba(26,29,43,.82), rgba(12,15,27,.76));
+  box-shadow: 0 7px 24px rgba(0,0,0,.22), 0 0 20px rgba(143,174,255,.09);
+  color: #a9c5ff;
+  text-align: center;
+  font-family: "Baloo 2", "Trebuchet MS", system-ui, sans-serif !important;
+  font-size: clamp(17px, 4.5vw, 22px);
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: .1px;
+  text-shadow: 0 0 10px rgba(147,180,255,.28);
+  pointer-events: none;
+  animation: welcomeFadeIn 1s cubic-bezier(.2,.85,.25,1) both,
+             welcomeFadeOut .8s ease 5.8s both;
+}
+@keyframes welcomeFadeIn {
+  0% { opacity:0; transform:translate(-50%,-12px) scale(.9); filter:blur(5px); }
+  72% { opacity:1; transform:translate(-50%,2px) scale(1.02); filter:blur(0); }
+  100% { opacity:1; transform:translate(-50%,0) scale(1); filter:blur(0); }
+}
+@keyframes welcomeFadeOut {
+  to { opacity:0; transform:translate(-50%,-7px) scale(.985); filter:blur(2px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .welcome-greeting { animation:none; }
+}
+</style>
+
+<style id="dynamic-island-origin-transition">
+/* The menu opens from, and retracts back into, the exact center of the floating island. */
+#adminContent.menu-enter,
+#adminContent.menu-exit {
+  display: block !important;
+  visibility: visible !important;
+  max-height: none !important;
+  height: auto !important;
+  overflow: visible !important;
+  transform-origin: 50% 32px !important;
+  will-change: clip-path, opacity, transform, filter;
+}
+#adminContent.menu-enter {
+  animation: islandExpand 1.35s cubic-bezier(.18,.82,.22,1) both !important;
+}
+#adminContent.menu-exit {
+  animation: islandRetract 1.45s cubic-bezier(.35,.02,.22,1) both !important;
+  pointer-events: none !important;
+}
+@keyframes islandExpand {
+  0% {
+    opacity: .15;
+    clip-path: ellipse(0% 0% at 50% 32px);
+    transform: scale(.88);
+    filter: blur(5px);
+  }
+  42% {
+    opacity: .92;
+    clip-path: ellipse(72% 76% at 50% 32px);
+    transform: scale(.985);
+    filter: blur(1px);
+  }
+  100% {
+    opacity: 1;
+    clip-path: ellipse(160% 170% at 50% 32px);
+    transform: scale(1);
+    filter: blur(0);
+  }
+}
+@keyframes islandRetract {
+  0% {
+    opacity: 1;
+    clip-path: ellipse(160% 170% at 50% 32px);
+    transform: scale(1);
+    filter: blur(0);
+  }
+  48% {
+    opacity: .94;
+    clip-path: ellipse(72% 76% at 50% 32px);
+    transform: scale(.985);
+    filter: blur(1px);
+  }
+  100% {
+    opacity: .08;
+    clip-path: ellipse(0% 0% at 50% 32px);
+    transform: scale(.88);
+    filter: blur(5px);
+  }
+}
+#adminIsland.is-opening,
+#adminIsland.is-receiving {
+  animation: islandPulse 1.35s ease both !important;
+}
+@keyframes islandPulse {
+  0%,100% {
+    box-shadow: 0 8px 28px rgba(0,0,0,.45), 0 0 22px rgba(247,217,139,.20);
+  }
+  45% {
+    box-shadow: 0 8px 36px rgba(0,0,0,.48), 0 0 46px rgba(255,226,157,.62),
+      inset 0 0 24px rgba(255,240,189,.2);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  #adminContent.menu-enter, #adminContent.menu-exit,
+  #adminIsland.is-opening, #adminIsland.is-receiving {
+    animation-duration: .01ms !important;
+  }
+}
+</style>
+
+<script>
+(() => {
+  const body = document.body;
+  const island = document.getElementById("adminIsland");
+  const content = document.getElementById("adminContent");
+  let open = false;
+  let animationToken = 0;
+
+  function setOpen(next) {
+    if (next === open) return;
+    open = next;
+    const token = ++animationToken;
+    island.classList.toggle("is-open", open);
+    island.setAttribute("aria-expanded", String(open));
+    island.setAttribute("aria-label", open ? "Thu gọn menu Admin" : "Mở menu Admin");
+
+    if (open) {
+      content.hidden = false;
+      content.inert = false;
+      content.classList.remove("menu-exit");
+      content.classList.add("menu-enter");
+      island.classList.remove("is-receiving", "is-opening");
+      void island.offsetWidth;
+      island.classList.add("is-opening");
+      body.classList.add("island-open");
+      body.classList.remove("island-collapsed");
+      content.setAttribute("aria-hidden", "false");
+    } else {
+      content.classList.remove("menu-enter");
+      content.classList.add("menu-exit");
+      island.classList.remove("is-opening", "is-receiving");
+      void island.offsetWidth;
+      island.classList.add("is-receiving");
+      island.inert = false;
+      content.inert = true;
+      body.classList.remove("island-open");
+      body.classList.add("island-collapsed");
+      content.setAttribute("aria-hidden", "true");
+      const finish = () => {
+        if (token !== animationToken || open) return;
+        content.hidden = true;
+        content.classList.remove("menu-exit");
+        island.classList.remove("is-receiving", "is-opening");
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      };
+      content.addEventListener("animationend", finish, { once:true });
+      // Fallback for browsers that do not fire animationend.
+      setTimeout(finish, 1550);
+    }
+  }
+
+  island.addEventListener("click", () => setOpen(!open));
+  content.hidden = true;
+  content.inert = true;
+  content.setAttribute("aria-hidden", "true");
+  island.classList.remove("is-open");
+  island.setAttribute("aria-expanded", "false");
+
+  document.addEventListener("pointerdown", event => {
+    const target = event.target.closest("button, header a");
+    if (target && !target.disabled) target.classList.add("ios-pressed");
+  });
+  ["pointerup", "pointercancel", "pointerleave"].forEach(type => {
+    document.addEventListener(type, event => {
+      const target = event.target.closest && event.target.closest(".ios-pressed");
+      if (target) target.classList.remove("ios-pressed");
+    }, true);
+  });
+})();
+</script>
+</body></html>
+  
